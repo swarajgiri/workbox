@@ -23,4 +23,13 @@ export default {
     }
     return `The '${moduleName}' must be used in a service worker.`;
   },
+
+  'duplicate-entries': ({firstEntry, secondEntry}) => {
+    if (!firstEntry || !secondEntry) {
+      throw new Error(`Unexpected input to 'duplicate-entries' error.`);
+    }
+    return `Two entries defined in the manifest with same url but different ` +
+      `revisions. '${firstEntry.request.url}: ${firstEntry.revision}' and ` +
+      `'${secondEntry.request.url}: ${secondEntry.revision}'.`;
+  },
 };

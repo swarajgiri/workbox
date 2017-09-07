@@ -21,13 +21,9 @@
       ".mjs"
     ]
   },
-<<<<<<< HEAD
   "pre-push": [
     "lint"
   ],
-=======
-  "pre-commit": ["lint"],
->>>>>>> fc0db56d... Adding lint to precommit
   "version": "0.0.0",
   "description": "Top-level scripts and dependencies for the workbox monorepo. Not meant to be published to npm.",
   "private": true,
