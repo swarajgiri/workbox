@@ -5,10 +5,12 @@ import WorkboxError from '../models/WorkboxError.mjs';
  *
  * Will call requestWillFetch on available plugins.
  *
- * @param {Request|String} request
- * @param {Object} fetchOptions
- * @param {Array<Object>} [plugins]
- * @return {Promise<Response>}
+ * @private
+ * @param {Request|String} request The request to make.
+ * @param {Object} fetchOptions Options passed to `fetch()`
+ * @param {Array<Object>} [plugins] Array of plugins to call during `fetch()`
+ * lifecycle.
+ * @return {Promise<Response>} Resolves to a Response.
  */
 const wrappedFetch = async (request, fetchOptions, plugins = []) => {
   if (typeof request === 'string') {

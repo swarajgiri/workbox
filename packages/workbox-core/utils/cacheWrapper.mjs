@@ -2,11 +2,11 @@
  * Wrapper around cache.put().
  *
  * Will call `cacheDidUpdate` on plugins if the cache was updated.
+ * @private
  * @param {String} cacheName
  * @param {Request} request
  * @param {Response} response
  * @param {Array<Object>} [plugins]
- * @return {Promise}
  */
 const putWrapper = async (cacheName, request, response, plugins = []) => {
   let responseToCache = await _isResponseSafeToCache(
@@ -42,6 +42,7 @@ const putWrapper = async (cacheName, request, response, plugins = []) => {
 /**
  * This is a wrapper around cache.match().
  *
+ * @private
  * @param {String} cacheName Name of the cache to match against.
  * @param {Request} request The Request that will be used to look up cache
  * entries.
@@ -56,7 +57,8 @@ const matchWrapper = async (cacheName, request, matchOptions, plugins = []) => {
   // a response, so calling these plugins makes no sense,
   // But further more, the "using" aspect should be managed
   // by the actual use case, not the cache wrapper
-  /** for (let plugin of plugins) {
+  /*
+  for (let plugin of plugins) {
     if (plugin.cachedResponseWillBeUsed) {
       cachedResponse = await plugin.cachedResponseWillBeUsed({
         request,
@@ -73,9 +75,13 @@ const matchWrapper = async (cacheName, request, matchOptions, plugins = []) => {
 /**
  * This method will call cacheWillUpdate on the available plugins (or use
  * response.ok) to determine if the Response is safe and valid to cache.
+ *
+ * @private
  * @param {Request} request
  * @param {Response} response
  * @param {Array<Objects>} plugins
+ * @return {Response} A `Response` is returned if it's parsed by plugins
+ * or the response is "ok".
  */
 const _isResponseSafeToCache = async (request, response, plugins) => {
   let responseToCache = response;
