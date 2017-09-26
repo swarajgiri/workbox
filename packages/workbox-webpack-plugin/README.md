@@ -10,14 +10,14 @@ precache.
 npm install --save-dev workbox-webpack-plugin
 ```
 
-## Documentation
-
-Read more at this module's [documentation page](https://workboxjs.org/reference-docs/latest/module-workbox-webpack-plugin.html).
-
-## Documentation
+## Getting started
 
 Read more at this module's
 [getting starting page](https://workboxjs.org/get-started/webpack).
+
+## Documentation
+
+Read more at this module's [documentation page](https://workboxjs.org/reference-docs/latest/module-workbox-webpack-plugin.html).
 
 # What's Workbox?
 
